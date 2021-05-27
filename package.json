@@ -1,0 +1,20 @@
+{
+  "name": "wigmoreconnectivity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sketch.js",
+  "scripts": {
+    "build": "rm -rf ./dist/* && cp ./index.html ./dist/index.html && cp ./conversations.html ./dist/conversations.html && cp ./make.html ./dist/make.html && cp ./performance.html ./dist/performance.html && cp ./info.html ./dist/info.html && cp -avr ./css/ ./dist/ && cp ./main.js ./dist/main.js && cp ./p5.min.js ./dist/p5.min.js && cp ./conversations.js ./dist/conversations.js && cp ./info.js ./dist/info.js && cp ./performance.js ./dist/performance.js && cp ./make.js ./dist/make.js && cp -avr ./images/ ./dist/ && cp -avr ./sounds/ ./dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gawainhewitt/wigmoreconnectivity.git"
+  },
+  "keywords": [],
+  "author": "Gawain Hewitt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gawainhewitt/wigmoreconnectivity/issues"
+  },
+  "homepage": "https://github.com/gawainhewitt/wigmoreconnectivity#readme"
+}
