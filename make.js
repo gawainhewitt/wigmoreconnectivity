@@ -220,7 +220,7 @@ function setup() {  // setup p5
                     // if animating put an if statement in the draw() function otherwise it will instantly overide it
   createButtonPositions(); // generate the default array info depending on number of buttons
 
-  inp = createInput(([saveText]));
+  inp = createInput(([saveText])); // tried styling this in css too but struggling
   inp.id("myInput");
   inp.parent('p5parent');
   inp.position(cnvDimension/4, cnvDimension/2);
@@ -243,6 +243,23 @@ function welcomeScreen() {
     text("Touch or click mouse to start. Click on faces or chairs to make your own music. Click Save to share your work. Click the back button on your browser to return to the Box Office", width/10, height/10, (width/10) * 8, (height/10) * 8);
   }
     welcome = welcome + 1;
+}
+
+function saveScreen(){
+  if(save.status){
+    background(156, 156, 184);
+    inp.show();
+    inp.value(saveText);
+    background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
+    textSize(cnvDimension/20);
+    textAlign(CENTER, CENTER);
+    text("Copy and paste this link to share your music", width/10, height/10, (width/10) * 8, (height/10) * 3);
+    fill(99, 245, 66);
+    ellipse(width/2, height/5*4, radius*2);
+    fill(0);
+    text("ok", width/2, height/5*4);
+    console.log("in save screen");
+  }
 }
 
 function createButtonPositions() {
@@ -299,19 +316,7 @@ function createButtonPositions() {
 
 function drawSynth(step) { // instead of using the draw function at 60 frames a second we will call this function when something changes
 
-  if(save.status){
-    background(156, 156, 184);
-    inp.show();
-    inp.value(saveText);
-    background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
-    textSize(cnvDimension/20);
-    textAlign(CENTER, CENTER);
-    text("Copy and paste this link to share your music", width/10, height/10, (width/10) * 8, (height/10) * 3);
-    fill(99, 245, 66);
-    ellipse(width/2, height/5*4, radius*2);
-    fill(0);
-    text("ok", width/2, height/5*4);
-  }else{
+  if(!save.status){
 
     imageMode(CORNER);
 
@@ -571,10 +576,9 @@ function handleClick(e){
         save.status = true;
         save.colour = 'rgba(255, 0, 255, 0.9)'
         saveSeq();
-        drawSynth();
+        saveScreen();
         setTimeout(() => {
           save.colour = 'rgba(255, 255, 255, 0.9)';
-          drawSynth();
         }, 1000);
       }
     }

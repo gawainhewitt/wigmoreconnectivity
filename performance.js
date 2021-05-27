@@ -64,6 +64,8 @@ function setup() {  // setup p5
     // *** add vanilla JS event listeners for touch which i want to use in place of the p5 ones as I believe that they are significantly faster
     let el = document.getElementById("p5parent");
     el.addEventListener("click", handleClick);
+    // let el2 = document.getElementById("text");
+    // el2.addEventListener("click", handleClick);
 
     setRadius();
 
@@ -82,12 +84,14 @@ function setup() {  // setup p5
           "onstop": reload
         }
       );
+      welcomeScreen();
 }
 
 var rectangleX, rectangleY, rectangleWidth, rectangleHeight;
 
 function draw() {
     if (welcome == 2){
+        document.getElementById("text").innerHTML = "";
         rectangleX = width/2 - radius/2;
         rectangleY = ((height/11)*7.5);
         rectangleWidth = width/10*8;
@@ -176,16 +180,26 @@ function draw() {
             textAlign(CENTER, CENTER);
             text("Error. Click to reload", playbuttonPosition.x, playbuttonPosition.y);
         }
-    }else if(welcome === 0){
-        background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
-        textSize(cnvDimension/20);
-        textAlign(CENTER, CENTER);
-        text("In this installation music made on learning and outreach projects run by Wigmore Hall are performed on an imagined Wigmore Hall Stage. The images used to represent the pieces are a mixture of pictures made by participants, stills from online music sessions and photos used in workshops.", width/10, height/10, (width/10) * 8, (height/10) * 8);
+    }
+}
+
+function welcomeScreen(){
+    if(welcome === 0){
+        console.log("in welcome screen 1");
+        // background(255); // background is grey (remember 5 is maximum because of the setup of colorMode)
+        // textSize(cnvDimension/20);
+        // textAlign(CENTER, CENTER);
+        // text("In this installation music made on learning and outreach projects run by Wigmore Hall are performed on an imagined Wigmore Hall Stage. The images used to represent the pieces are a mixture of pictures made by participants, stills from online music sessions and photos used in workshops.", width/10, height/10, (width/10) * 8, (height/10) * 8);
+        document.getElementById("text").innerHTML = "<h1><br>Performance<br></h1><p>In this installation music made on learning and outreach projects run by Wigmore Hall are performed on an imagined Wigmore Hall Stage. The images used to represent the pieces are a mixture of pictures made by participants, stills from online music sessions and photos used in workshops.<br><br>Click to continue</p>";
     }else if(welcome === 1){
-        background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
-        textSize(cnvDimension/20);
-        textAlign(CENTER, CENTER);
-        text("Touch or click mouse to start. Click on the top bar to play a track. Click again to load the next track. Click on the bottom of the stage to return to the Box Office.", width/10, height/10, (width/10) * 8, (height/10) * 8);
+        console.log("in welcome screen 2");
+        // background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
+        // textSize(cnvDimension/20);
+        // textAlign(CENTER, CENTER);
+        // text("Touch or click mouse to start. Click on the top bar to play a track. Click again to load the next track. Click on the bottom of the stage to return to the Box Office.", width/10, height/10, (width/10) * 8, (height/10) * 8);
+        //document.getElementById("text").innerHTML = "<h1><br>2<br></h1><p>In this installation music made on learning and outreach projects run by Wigmore Hall are performed on an imagined Wigmore Hall Stage. The images used to represent the pieces are a mixture of pictures made by participants, stills from online music sessions and photos used in workshops.<br><br>Click to continue</p>";
+
+        document.getElementById("text").innerHTML = "<h1><br></h1><p>Touch or click mouse to start. Click on the top bar to play a track. Click again to load the next track. Click on the bottom of the stage to return to the Box Office.</p>";
     }
 }
 
@@ -241,6 +255,8 @@ function handleClick() {
         }
     }else{
         welcome = welcome +1;
+        console.log(`welcome - ${welcome}`)
+        welcomeScreen();
     }
 }
 
