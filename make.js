@@ -226,6 +226,7 @@ function setup() {  // setup p5
   inp.position(cnvDimension/4, cnvDimension/2);
   inp.size(cnvDimension/2);
   inp.hide();
+
 }
 
 function handleOrientationEvent() {
@@ -234,12 +235,16 @@ function handleOrientationEvent() {
 }
 
 function welcomeScreen() {
-  background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
-  textSize(cnvDimension/20);
-  textAlign(CENTER, CENTER);
+  document.getElementsByTagName('body')[0].style.background = "white";
+  // background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
+  // textSize(cnvDimension/20);
+  // textAlign(CENTER, CENTER);
   if(welcome ===0){
-    text("In this installation you can use loops and excerpts from music made on learning and outreach projects run by Wigmore Hall to make your own musical pieces. The faces used in the piece were drawn by children from our partner schools.", width/10, height/10, (width/10) * 8, (height/10) * 8);
+    document.getElementById("text").innerHTML = '<h2>Make Music</h2><p>In this installation you can use loops and excerpts from music made on learning and participation projects led by Wigmore Hall to make your own musical pieces. The faces used in the piece were drawn by children from Partner School, Weald Rise Primary School, Harrow.<br></p><h4>Click to continue</h4>';
+// text("In this installation you can use loops and excerpts from music made on learning and participation projects led by Wigmore Hall to make your own musical pieces. The faces used in the piece were drawn by children from our partner schools.", width/10, height/10, (width/10) * 8, (height/10) * 8);
   }else{
+    document.getElementById("text").innerHTML = "<h2>To Play Installation:</h2><p>Click on faces or chairs to make your own music. <br><br>Use the + and - buttons to speed up or slow down your piece.<br><br>Click Save to share your work.<br><br>Use the back button on your browser to return to the Box Office.<br><br></p><h4>Click to continue</h4>";
+
     text("Touch or click mouse to start. Click on faces or chairs to make your own music. Click Save to share your work. Click the back button on your browser to return to the Box Office", width/10, height/10, (width/10) * 8, (height/10) * 8);
   }
     welcome = welcome + 1;
@@ -247,17 +252,21 @@ function welcomeScreen() {
 
 function saveScreen(){
   if(save.status){
-    background(156, 156, 184);
-    inp.show();
-    inp.value(saveText);
-    background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
-    textSize(cnvDimension/20);
-    textAlign(CENTER, CENTER);
-    text("Copy and paste this link to share your music", width/10, height/10, (width/10) * 8, (height/10) * 3);
-    fill(99, 245, 66);
-    ellipse(width/2, height/5*4, radius*2);
-    fill(0);
-    text("ok", width/2, height/5*4);
+    document.getElementsByTagName('body')[0].style.background = "white";
+    document.getElementById("mycanvas").style.display = "none";
+    document.getElementById("text").style.display = "block";
+    document.getElementById("text").innerHTML = `<h2>Save And Share:</h2><p>This new weblink contains the piece you have made. <br><br>${saveText}<br><br></p><h4>Click or touch to save the link to your clipboard and return to Make Music</h4>`;
+    // background(156, 156, 184);
+    // inp.show();
+    // inp.imension/20);
+    // textAlign(CENTER, CENTER);
+    // text("Copy and paste this link to share your music", width/10, height/10, (width/10) * 8, (height/10) * 3);
+    // fill(99, 245, 66);
+    // ellipse(width/2, height/5*4, radius*2);
+    // fill(0);
+    // text("ok", width/2, height/5value(saveText);
+    // background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
+    // textSize(cnvD*4);
     console.log("in save screen");
   }
 }
@@ -317,9 +326,12 @@ function createButtonPositions() {
 function drawSynth(step) { // instead of using the draw function at 60 frames a second we will call this function when something changes
 
   if(!save.status){
-
+    document.getElementsByTagName('body')[0].style.background = "grey";
+    document.getElementById("mycanvas").style.display = "block";
+    document.getElementById("text").style.display = "none";
     imageMode(CORNER);
-
+    textSize(cnvDimension/20);
+    textAlign(CENTER, CENTER);
     image(carpet, 0, 0, width, height); // place the carpet image
     imageMode(CENTER);
     image(looper, looper_x, looper_y + (seqHeight/1.5), looperwidth, looperheight); // place the looper image
@@ -375,6 +387,8 @@ function drawSynth(step) { // instead of using the draw function at 60 frames a 
 
 function copySave() {
   /* Get the text field */
+  inp.show();
+  inp.value(saveText);
   var copyText = document.getElementById("myInput");
 
   /* Select the text field */
@@ -383,7 +397,7 @@ function copySave() {
 
   /* Copy the text inside the text field */
   document.execCommand("copy");
-
+  inp.hide();
   /* Alert the copied text */
   //alert("Copied the text: " + copyText.value);
 }
@@ -513,12 +527,13 @@ function startAudio() {
 function handleClick(e){
   if(soundOn) {
     if(save.status){
-      let d = dist(mouseX, mouseY, width/2, height/5*4);
-      if (d < radius) {
-        save.status = false;
-        copySave();
-        inp.hide();
-      }
+      drawSynth();
+      // let d = dist(mouseX, mouseY, width/2, height/5*4);
+      // if (d < radius) {
+      save.status = false;
+      copySave();
+      //   inp.hide();
+      //}
     }else{
 
       for (let i = 0; i < numberOfloopers; i++) {

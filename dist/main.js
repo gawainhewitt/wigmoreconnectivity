@@ -48,6 +48,7 @@ function setup() {  // setup p5
 let perfX, perfY, perfWidth, perfHeight, convX, convY, convWidth, convHeight, makeX, makeY, makeWidth, makeHeight, infoX, infoY, infoWidth, infoHeight; //do this for all the options then use the variables for both mouseOver, dimensions and click
 
 function refreshPage() {
+    document.getElementsByTagName('body')[0].style.background = "grey";
     dimensions();
     imageMode(CORNER);
     image(performances, perfX, perfY, perfWidth, perfHeight);

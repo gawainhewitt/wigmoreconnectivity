@@ -72,12 +72,26 @@ function setup() {  // setup p5
           "onstop": reload
         }
       );
+    welcomeScreen();
 }
 
 var rectangleX, rectangleY, rectangleWidth, rectangleHeight;
 
+function welcomeScreen(){
+    document.getElementsByTagName('body')[0].style.background = "white";
+    if(welcome === 0){
+        console.log("in welcome screen 1");
+        document.getElementById("text").innerHTML = '<h2>Conversations</h2><p>Gawain Hewitt and TROUPE asked the public to respond to a series of questions about music within the context of the pandemic of 2020/21.<br><br>In this installation you can hear the responses.<br></p><h4>Click to continue</h4>';
+    }else if(welcome === 1){
+        console.log("in welcome screen 2");
+        document.getElementById("text").innerHTML = "<h2>To Play Installation:</h2><p>Click the button to play a randomly selected file.<br><br>Click the back button on your browser to return to the Box Office.<br><br></p><h4>Click to continue</h4>";
+    }
+}
+
 function draw() {
     if(welcome === 2){
+        document.getElementsByTagName('body')[0].style.background = "grey";
+        document.getElementById("text").style.display = "none";
         rectangleX = width/2 - radius/2;
         rectangleY = height/2 - radius/4;
         rectangleWidth = radius;
@@ -129,16 +143,6 @@ function draw() {
             textSize(cnvDimension/30);
             text("Network Problems, click to try again", rectangleX, rectangleY, rectangleWidth, rectangleHeight);// same dimensions as the rectangle above
         }
-    }else if(welcome === 0){
-        background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
-        textSize(cnvDimension/30);
-        textAlign(CENTER, CENTER);
-        text("Gawain Hewitt and TROUPE asked the public to respond to a series of questions about music within the context of the pandemic of 2020/21. In this installation you can hear the responses.", width/10, height/10, (width/10) * 8, (height/10) * 8);
-    }else if(welcome === 1){
-        background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
-        textSize(cnvDimension/30);
-        textAlign(CENTER, CENTER);
-        text("Touch or click mouse to start. Click the button to play a randomly selected file. Click the back button on your browser to return to the Box Office.", width/10, height/10, (width/10) * 8, (height/10) * 8);
     }
 }
 
@@ -170,6 +174,7 @@ function handleClick() {
         }
     }else{
         welcome = welcome +1;
+        welcomeScreen();
     }
 }
 

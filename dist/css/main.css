@@ -2,13 +2,17 @@ body {
   width: 100%;
   padding: 0;
   margin: 0;
-  background-color: rgb(170, 174, 182);
+  background-color:white;
 }
 
 #mycanvas {  /* dynamically change the p5 canvas to always fill the parent div width.  The width of the canvas from p5 is dynamically created, meaning that it gets applied at element level. There is no way of overriding that with specificity, so you need to raise a declaration as !important: */
 float: left;
 width: 100% !important;
 height: 100% !important;
+}
+
+.center {
+  text-align: center;
 }
 
 
@@ -24,9 +28,12 @@ position: absolute;
 
 #text {
   font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
+  text-align: left;
   margin-top: auto;
   margin-bottom: auto;
+  background-color: white;
+  color: black;
+  padding: 0em 2em 50em 2em;
 }
 
 #p5parent { /* then you have to place the canvas within a parent div which has the correct attributes to dynamically create the right dimensions */
@@ -68,11 +75,31 @@ width: 100%;
 
 h1 {
 font-family: Arial, Helvetica, sans-serif;
-padding: 20em, 0;
 text-align: center;
 font-size: 5em;
-color: white;
+color: black;
 }
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  font-size: 3em;
+  color: black;
+  }
+
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  font-size: 2em;
+  color: black;
+  }
+
+h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  font-size: 2em;
+  color: black;
+  }
 
 #welcometext {
 font-family: Arial, Helvetica, sans-serif;
@@ -92,10 +119,9 @@ color: white;
 
 p {
 font-family: Arial, Helvetica, sans-serif;
-padding: 20em, 0;
-text-align: center;
+text-align: left;
 font-size: 1.5em;
-color: white;
+color: black;
 }
 
 img {

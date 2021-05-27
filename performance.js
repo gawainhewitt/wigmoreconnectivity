@@ -12,6 +12,7 @@ var buttonState = false;
 var whichSound; // which of the samples?
 var theSample; //current sample
 var theImage; //current image
+var theName;
 var theVolume = -6;
 const player = new Tone.Player().toDestination();
 const toneWaveForm = new Tone.Waveform();
@@ -35,6 +36,8 @@ let hallImage;
 let imageLoaded = false;
 let playbuttonPosition;
 let welcome = 0;
+var nameToUse;
+var nameToShow;
 
 
 function preload(){
@@ -91,7 +94,8 @@ var rectangleX, rectangleY, rectangleWidth, rectangleHeight;
 
 function draw() {
     if (welcome == 2){
-        document.getElementById("text").innerHTML = "";
+        document.getElementsByTagName('body')[0].style.background = "grey";
+        document.getElementById("text").style.display = "none";
         rectangleX = width/2 - radius/2;
         rectangleY = ((height/11)*7.5);
         rectangleWidth = width/10*8;
@@ -108,13 +112,13 @@ function draw() {
         background(backgroundColour); // background
         imageMode(CORNER);
         image(hallImage, (width/20), (height/5), (width/20)*18, (height/5)*4);
-        textSize(cnvDimension/15);
-        fill(0);
-        noStroke();
-        text("Back to Box Office", width/2, height/20*19.4);
+
 
         //imageMode(CENTER);
         if((interfaceState === 0)||(imageLoaded === false)){
+            textSize(cnvDimension/15);
+            fill(0);
+            noStroke();
             stroke(0); //colour
             strokeWeight(4);
             fill(playOffColour);
@@ -138,13 +142,22 @@ function draw() {
             fill(0);
             textAlign(CENTER, CENTER);
             noStroke();
+            textSize(cnvDimension/15);
             text("Click To Play", playbuttonPosition.x, playbuttonPosition.y);
             imageMode(CENTER);
             image(imageToShow, picX, picY, picWidth, picHeight);
+            textSize(cnvDimension/15);
+            fill(0);
+            noStroke();
+            text(`name to show ${nameToShow}`, width/2, height/20*19.4);
             stroke('#f2fa04'); //colour
             strokeWeight(10);
             line(x, y, x + visWidth, y);
         }else if(interfaceState === 2){
+            textSize(cnvDimension/15);
+            fill(0);
+            noStroke();
+            text(`name to show ${nameToShow}`, width/2, height/20*19.4);
             stroke('#f2fa04'); //colour
             strokeWeight(10);
             imageMode(CENTER);
@@ -169,6 +182,7 @@ function draw() {
             fill(0);
             textAlign(CENTER, CENTER);
             noStroke();
+            textSize(cnvDimension/15);
             text("Click To Load Next Song", playbuttonPosition.x, playbuttonPosition.y);
         }else if(interfaceState === 3){
             noStroke();
@@ -178,28 +192,20 @@ function draw() {
             rect(playbuttonPosition.x, playbuttonPosition.y, rectangleWidth, rectangleHeight);
             fill(0);
             textAlign(CENTER, CENTER);
+            textSize(cnvDimension/15);
             text("Error. Click to reload", playbuttonPosition.x, playbuttonPosition.y);
         }
     }
 }
 
 function welcomeScreen(){
+    document.getElementsByTagName('body')[0].style.background = "white";
     if(welcome === 0){
         console.log("in welcome screen 1");
-        // background(255); // background is grey (remember 5 is maximum because of the setup of colorMode)
-        // textSize(cnvDimension/20);
-        // textAlign(CENTER, CENTER);
-        // text("In this installation music made on learning and outreach projects run by Wigmore Hall are performed on an imagined Wigmore Hall Stage. The images used to represent the pieces are a mixture of pictures made by participants, stills from online music sessions and photos used in workshops.", width/10, height/10, (width/10) * 8, (height/10) * 8);
-        document.getElementById("text").innerHTML = "<h1><br>Performance<br></h1><p>In this installation music made on learning and outreach projects run by Wigmore Hall are performed on an imagined Wigmore Hall Stage. The images used to represent the pieces are a mixture of pictures made by participants, stills from online music sessions and photos used in workshops.<br><br>Click to continue</p>";
+        document.getElementById("text").innerHTML = '<h2>Performance</h2><p>In this installation music made on learning and participation projects led by Wigmore Hall are performed on an imagined Wigmore Hall Stage. The images used to represent the pieces are a mixture of pictures made by participants, stills from online music sessions and photos used in workshops.<br></p><h4>Click to continue</h4>';
     }else if(welcome === 1){
         console.log("in welcome screen 2");
-        // background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
-        // textSize(cnvDimension/20);
-        // textAlign(CENTER, CENTER);
-        // text("Touch or click mouse to start. Click on the top bar to play a track. Click again to load the next track. Click on the bottom of the stage to return to the Box Office.", width/10, height/10, (width/10) * 8, (height/10) * 8);
-        //document.getElementById("text").innerHTML = "<h1><br>2<br></h1><p>In this installation music made on learning and outreach projects run by Wigmore Hall are performed on an imagined Wigmore Hall Stage. The images used to represent the pieces are a mixture of pictures made by participants, stills from online music sessions and photos used in workshops.<br><br>Click to continue</p>";
-
-        document.getElementById("text").innerHTML = "<h1><br></h1><p>Touch or click mouse to start. Click on the top bar to play a track. Click again to load the next track. Click on the bottom of the stage to return to the Box Office.</p>";
+        document.getElementById("text").innerHTML = "<h2>To Play Installation:</h2><p>Click on the top bar to play a track. <br><br>When playing, click top bar again to load the next track. <br><br>Use the back button on your browser to return to the Box Office.<br><br></p><h4>Click to continue</h4>";
     }
 }
 
@@ -250,9 +256,9 @@ function handleClick() {
                 interfaceState = 0;
                 assignSoundToPlayer();
         }
-        if((mouseX > width/5) && (mouseX < width/5*4) && (mouseY > height/20*18.6) && (mouseY < height)){
-            window.location.href = "/index.html";
-        }
+        // if((mouseX > width/5) && (mouseX < width/5*4) && (mouseY > height/20*18.6) && (mouseY < height)){
+        //     window.location.href = "/index.html";
+        // }
     }else{
         welcome = welcome +1;
         console.log(`welcome - ${welcome}`)
@@ -294,6 +300,7 @@ function chooseSample(){
     console.log(`whichSound = ${whichSound}`);
     theSample = `perf${whichSound}.flac`;
     theImage = `perf${whichSound}.png`;
+    theName = whichSound;
     console.log(`theSample = ${theSample}`);
     console.log(`usedSounds = ${usedSounds}`);
 
@@ -313,6 +320,7 @@ function haveWeUsedSound(comparer) {
 function assignSoundToPlayer() {
     if(bufferToPlay === buffer1){
         perfImage0 = loadImage(`/images/${theImage}`, () => {imageToUse = perfImage0});
+        nameToUse = theName;
         buffer0 = new Tone.ToneAudioBuffer(`/sounds/${theSample}`, () => {
             console.log("buffer 0 loaded");
             bufferToPlay = buffer0;
@@ -329,6 +337,7 @@ function assignSoundToPlayer() {
 
     }else{
         perfImage1 = loadImage(`/images/${theImage}`, () => {imageToUse = perfImage1});
+        nameToUse = theName;
         buffer1 = new Tone.ToneAudioBuffer(`/sounds/${theSample}`, () => {
             console.log("buffer 1 loaded");
             bufferToPlay = buffer1;
@@ -350,6 +359,7 @@ function reload() {
     if(lastBuffer !== currentBuffer){
         player.buffer = bufferToPlay.get();
         imageToShow = imageToUse;
+        nameToShow = nameToUse;
         interfaceState = 1;
     }else{
         interfaceState = 0;
