@@ -129,19 +129,19 @@ function preload() {
 
   buffers = new Tone.ToneAudioBuffers({
     urls: {
-      A1: `${one}.flac`,
-      A2: `${two}.flac`,
-      A3: `${three}.flac`,
-      A4: `${four}.flac`,
-      A5: `${five}.flac`,
-      A6: `${six}.flac`,
+      A1: `${one}.mp3`,
+      A2: `${two}.mp3`,
+      A3: `${three}.mp3`,
+      A4: `${four}.mp3`,
+      A5: `${five}.mp3`,
+      A6: `${six}.mp3`,
     },
     //onload:  () => welcomeScreen(), // initial screen for project - also allows an elegant place to put in the Tone.start() command.,
     baseUrl: "/sounds/"
   });
 
   for(let i = 0; i < seqRows; i++){
-    seqBuffers[i] = new Tone.ToneAudioBuffer(`/sounds/${stepName[i]}.flac`)
+    seqBuffers[i] = new Tone.ToneAudioBuffer(`/sounds/${stepName[i]}.mp3`)
   }
 
 }
@@ -240,7 +240,7 @@ function welcomeScreen() {
   // textSize(cnvDimension/20);
   // textAlign(CENTER, CENTER);
   if(welcome ===0){
-    document.getElementById("text").innerHTML = '<h2>Make Music</h2><p>In this installation you can use loops and excerpts from music made on learning and participation projects led by Wigmore Hall to make your own musical pieces. The faces used in the piece were drawn by children from Partner School, Weald Rise Primary School, Harrow.<br></p><h4>Click to continue</h4>';
+    document.getElementById("text").innerHTML = '<h2>Make Music</h2><p>In this installation you can use loops and excerpts from music made on learning and participation projects led by Wigmore Hall to make your own musical pieces. The faces used in the piece were drawn by children from one of our partner Schools, Weald Rise Primary School<br></p><h4>Click to continue</h4>';
 // text("In this installation you can use loops and excerpts from music made on learning and participation projects led by Wigmore Hall to make your own musical pieces. The faces used in the piece were drawn by children from our partner schools.", width/10, height/10, (width/10) * 8, (height/10) * 8);
   }else{
     document.getElementById("text").innerHTML = "<h2>To Play Installation:</h2><p>Click on faces or chairs to make your own music. <br><br>Use the + and - buttons to speed up or slow down your piece.<br><br>Click Save to share your work.<br><br>Use the back button on your browser to return to the Box Office.<br><br></p><h4>Click to continue</h4>";
@@ -399,7 +399,7 @@ function copySave() {
   document.execCommand("copy");
   inp.hide();
   /* Alert the copied text */
-  //alert("Copied the text: " + copyText.value);
+  alert(`Your song's link has been copied to the clipboard`);
 }
 
 function startAudio() {
@@ -651,10 +651,10 @@ let index = 0;
 
     const sampler = new Tone.Sampler({
       urls: {
-        A3: "step1.flac",
-        G3: "step2.flac",
-        E3: "step3.flac",
-        D3: "loop1.flac"
+        A3: "step1.mp3",
+        G3: "step2.mp3",
+        E3: "step3.mp3",
+        D3: "loop1.mp3"
       },
       baseUrl: "/sounds/",
     // 	onload: () => {

@@ -74,7 +74,7 @@ body {
     /* border: 5px solid yellow; */
     }
     .textclass{
-      width: 100%; /* set to 102% to hack around an issue with space to the right in portrait mode*/
+      width: 80%; /* set to 102% to hack around an issue with space to the right in portrait mode*/
       display: block;
       margin-left: auto;
       margin-right: auto;

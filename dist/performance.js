@@ -37,7 +37,10 @@ let imageLoaded = false;
 let playbuttonPosition;
 let welcome = 0;
 var nameToUse;
+var titleToShow;
 var nameToShow;
+var titles = ["Physical Comp", "Rumble under the Sea", "Improvisation", "Sea Sound", " Walking song", "15th March", "Into each life some rain", "Take me to the sea", "With Nobody's Jig", "Untitled 1", "Untitled 2", "Untitled 3", "Down By The Bay"];
+var names = ["Chamber Tots", "Chamber Tots", "Come and Create", "Come and Create", "Come And Create", "Music For Life", "Music For Life", "Music For Life", "Music For Life", "Out of the Ordinary", "Out of the Ordinary", "Out of the Ordinary", "Singing With Friends"];
 
 
 function preload(){
@@ -146,18 +149,20 @@ function draw() {
             text("Click To Play", playbuttonPosition.x, playbuttonPosition.y);
             imageMode(CENTER);
             image(imageToShow, picX, picY, picWidth, picHeight);
-            textSize(cnvDimension/15);
+            textSize(cnvDimension/20);
             fill(0);
             noStroke();
-            text(`name to show ${nameToShow}`, width/2, height/20*19.4);
+            text(nameToShow, width/2, height/20*6);
+            text(titleToShow, width/2, height/20*19.4);
             stroke('#f2fa04'); //colour
             strokeWeight(10);
             line(x, y, x + visWidth, y);
         }else if(interfaceState === 2){
-            textSize(cnvDimension/15);
+            textSize(cnvDimension/20);
             fill(0);
             noStroke();
-            text(`name to show ${nameToShow}`, width/2, height/20*19.4);
+            text(nameToShow, width/2, height/20*6);
+            text(titleToShow, width/2, height/20*19.4);
             stroke('#f2fa04'); //colour
             strokeWeight(10);
             imageMode(CENTER);
@@ -298,7 +303,7 @@ function chooseSample(){
 
     usedSounds.push(whichSound);
     console.log(`whichSound = ${whichSound}`);
-    theSample = `perf${whichSound}.flac`;
+    theSample = `perf${whichSound}.mp3`;
     theImage = `perf${whichSound}.png`;
     theName = whichSound;
     console.log(`theSample = ${theSample}`);
@@ -359,7 +364,8 @@ function reload() {
     if(lastBuffer !== currentBuffer){
         player.buffer = bufferToPlay.get();
         imageToShow = imageToUse;
-        nameToShow = nameToUse;
+        titleToShow = titles[nameToUse-1];
+        nameToShow = names[nameToUse-1];
         interfaceState = 1;
     }else{
         interfaceState = 0;

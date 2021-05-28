@@ -205,7 +205,7 @@ function chooseSample(){
 
     usedSounds.push(whichSound);
     console.log(`whichSound = ${whichSound}`);
-    theSample = `speech${whichSound}.flac`;
+    theSample = `speech${whichSound}.mp3`;
     console.log(`theSample = ${theSample}`);
     console.log(`usedSounds = ${usedSounds}`);
 
