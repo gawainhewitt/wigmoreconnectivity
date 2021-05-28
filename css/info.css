@@ -1,0 +1,108 @@
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color:white;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+#infotext {
+  margin: 0em 2em 0em 2em;
+}
+
+ul {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  font-size: 1.5em;
+  color: black;
+}
+
+li {
+  margin: 1em;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 3em;
+  color: black;
+  }
+
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    font-size: 2em;
+    color: black;
+    }
+
+  h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    font-size: 2em;
+    color: black;
+    }
+
+  h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    font-size: 2em;
+    color: black;
+    }
+
+  p {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  font-size: 1.5em;
+  color: black;
+  }
+
+
+
+@media (min-aspect-ratio: 3/2) {
+.containerclass{
+  position: relative;
+  width: 48%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* border: 5px solid red; */
+}
+}
+
+@media (min-aspect-ratio: 16/17) and (max-aspect-ratio: 3/2) {
+.containerclass{
+  width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* border: 5px solid blue; */
+}
+}
+
+@media (max-aspect-ratio: 16/17) {
+.containerclass{
+  width: 100%; /* set to 102% to hack around an issue with space to the right in portrait mode*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* border: 5px solid yellow; */
+  }
+}
+
+
+span.clear { clear: left; display: block; } /* clears the float thus ensuring the images remain within the container div */

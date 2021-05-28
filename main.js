@@ -86,10 +86,10 @@ function dimensions() {
     makeY = yPercent*19.83;
     makeWidth = xPercent*14.9;
     makeHeight = yPercent*21.7;
-    infoX = xPercent*10.43;
-    infoY = yPercent*74.08;
-    infoWidth = xPercent*15.66;
-    infoHeight = yPercent*18.01;
+    infoX = xPercent*17.2;
+    infoY = yPercent*19.8;
+    infoWidth = xPercent*8.96;
+    infoHeight = yPercent*31.16;
 }
 
 function handleClick() {
@@ -129,7 +129,8 @@ function handleClick() {
             info = infoOff;
             refreshPage()
         }, 1000);
-        //window.location.href = "/info.html";
+        window.location.href = "/info.html";
+        console.log("info");
     }
     return false;
 }
