@@ -240,7 +240,7 @@ function welcomeScreen() {
   // textSize(cnvDimension/20);
   // textAlign(CENTER, CENTER);
   if(welcome ===0){
-    document.getElementById("text").innerHTML = '<h2>Make Music</h2><p>In this installation you can use loops and excerpts from music made on learning and participation projects led by Wigmore Hall to make your own musical pieces. The faces used in the piece were drawn by children from one of our partner Schools, Weald Rise Primary School<br></p><h4>Click to continue</h4>';
+    document.getElementById("text").innerHTML = '<h2>Make Music</h2><p>In this installation you can use loops and excerpts from music made on learning and participation projects led by Wigmore Hall to make your own musical pieces. The faces used in the piece were drawn by children from one of our Partner Schools, Weald Rise Primary School<br></p><h4>Click to continue</h4>';
 // text("In this installation you can use loops and excerpts from music made on learning and participation projects led by Wigmore Hall to make your own musical pieces. The faces used in the piece were drawn by children from our partner schools.", width/10, height/10, (width/10) * 8, (height/10) * 8);
   }else{
     document.getElementById("text").innerHTML = "<h2>To Play Installation:</h2><p>Click on faces or chairs to make your own music. <br><br>Use the + and - buttons to speed up or slow down your piece.<br><br>Click Save to share your work.<br><br>Use the back button on your browser to return to the Box Office.<br><br></p><h4>Click to continue</h4>";
