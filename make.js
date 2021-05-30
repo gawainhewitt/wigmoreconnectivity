@@ -255,22 +255,20 @@ function saveScreen(){
     document.getElementsByTagName('body')[0].style.background = "white";
     document.getElementById("mycanvas").style.display = "none";
     document.getElementById("text").style.display = "block";
-    document.getElementById("text").innerHTML = `<h2>Save And Share:</h2><p>You have now saved your work to a new custom web address (URL) which you can keep or share.<br>
+    document.getElementById("text").innerHTML = `<h2>Save And Share:</h2>
 
-    Click or touch to save this new URL to your devices clipboard.
-     You can now paste it into an email, message, or social media to share your work with others,  or paste it into a file to keep it for later and you and you can then revisit your work whenever you like.
-      If you send it to someone else,  they can listen to it, or they use it as the start of a new collaborative piece, saving it again with a new link (your own work will still remain as you made it).<br><br></p><h4>Click or touch to save the link to your clipboard and return to Make Music</h4>`;
-    // background(156, 156, 184);
-    // inp.show();
-    // inp.imension/20);
-    // textAlign(CENTER, CENTER);
-    // text("Copy and paste this link to share your music", width/10, height/10, (width/10) * 8, (height/10) * 3);
-    // fill(99, 245, 66);
-    // ellipse(width/2, height/5*4, radius*2);
-    // fill(0);
-    // text("ok", width/2, height/5value(saveText);
-    // background(150); // background is grey (remember 5 is maximum because of the setup of colorMode)
-    // textSize(cnvD*4);
+    <p>You have now saved your work to a new custom web address (URL) which you can keep or share.<br><br>
+
+    When you click or touch the screen it will save this new URL to your devices clipboard.<br><br>
+
+    You can now paste it into an email, message, or social media to share your work with others,
+    or paste it into a file which you can then save to keep it for later.<br><br>
+
+    If you send it to someone else, they can listen to it, or they can use it as the start of a new collaborative piece,
+    saving it again with a new link (your own work will still remain as you made it).<br><br></p>
+
+    <h4>Click or touch to save the link to your clipboard and return to Make Music</h4>`;
+
     console.log("in save screen");
   }
 }

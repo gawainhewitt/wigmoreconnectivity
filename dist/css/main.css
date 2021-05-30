@@ -44,6 +44,7 @@ position: absolute;
   margin-bottom: auto;
   background-color: white;
   color: black;
+  float: left;
   padding: 0em 2em 50em 2em;
 }
 
