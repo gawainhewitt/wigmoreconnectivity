@@ -255,7 +255,11 @@ function saveScreen(){
     document.getElementsByTagName('body')[0].style.background = "white";
     document.getElementById("mycanvas").style.display = "none";
     document.getElementById("text").style.display = "block";
-    document.getElementById("text").innerHTML = `<h2>Save And Share:</h2><p>This new weblink contains the piece you have made. <br><br>${saveText}<br><br></p><h4>Click or touch to save the link to your clipboard and return to Make Music</h4>`;
+    document.getElementById("text").innerHTML = `<h2>Save And Share:</h2><p>You have now saved your work to a new custom web address (URL) which you can keep or share.<br>
+
+    Click or touch to save this new URL to your devices clipboard.
+     You can now paste it into an email, message, or social media to share your work with others,  or paste it into a file to keep it for later and you and you can then revisit your work whenever you like.
+      If you send it to someone else,  they can listen to it, or they use it as the start of a new collaborative piece, saving it again with a new link (your own work will still remain as you made it).<br><br></p><h4>Click or touch to save the link to your clipboard and return to Make Music</h4>`;
     // background(156, 156, 184);
     // inp.show();
     // inp.imension/20);
