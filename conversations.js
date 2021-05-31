@@ -26,7 +26,7 @@ var cnvDimension;
 var bufferToPlay = buffer1;
 var lastBuffer;
 var currentBuffer;
-var numberOfSamples = 23;
+var numberOfSamples = 42;
 let visualisationSize;
 let welcome = 0;
 
